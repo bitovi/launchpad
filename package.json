@@ -1,0 +1,15 @@
+{
+	"name": "node-browserlauncher",
+	"description": "Launch a browser: Local, Remote, Browserstack",
+	"version": "0.0.1",
+	"homepage": "http://github.com/daffl/node-browserlauncher",
+	"author": "David Luecke",
+	"main": "lib/index.js",
+	"engines": {
+		"node": "~0.6"
+	},
+	"dependencies": {
+    "browserstack" : ">= 0.1.0",
+    "uberproto" : ">= 1.0.0"
+	}
+}
