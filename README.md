@@ -1,0 +1,4 @@
+node-browserlauncher
+====================
+
+Launches browsers
