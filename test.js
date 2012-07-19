@@ -1,13 +1,5 @@
-var Browser = require('./lib/browserstack');
+var launch = require('./lib/local');
 
-var instance = Browser({
-	username : 'bitovi',
-	password : ''
-}).getInstance({
-	browser: 'chrome',
-	url : 'http://google.ca'
+launch().firefox('http://imdb.org', function(err, instance) {
+
 });
-
-instance.start(function(err, message) {
-
-})
