@@ -9,7 +9,6 @@
 		"node": "~0.6"
 	},
 	"dependencies": {
-    "browserstack" : ">= 0.1.0",
-    "uberproto" : ">= 1.0.0"
+    "browserstack" : ">= 0.1.0"
 	}
 }
