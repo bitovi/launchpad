@@ -1,8 +1,8 @@
 {
-	"name": "node-browserlauncher",
-	"description": "Launch a browser: Local, Remote, Browserstack",
+	"name": "launchness",
+	"description": "Launch browsers",
 	"version": "0.0.1",
-	"homepage": "http://github.com/daffl/node-browserlauncher",
+	"homepage": "https://github.com/daffl/launchness",
 	"author": "David Luecke",
 	"main": "lib/index.js",
 	"engines": {

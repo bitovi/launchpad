@@ -2,7 +2,7 @@ var launch = require('./lib'),
 	config = {
 		username : 'username',
 		password : 'password'
-	}
+	};
 
 //launch.browserstack(config, function(err, browserstack) {
 //	browserstack.ie('http://ebay.ca', { os : 'win' }, function(err, instance) {
