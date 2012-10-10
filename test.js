@@ -17,6 +17,7 @@ var launch = require('./lib'),
 //});
 
 launch.local(function(err, local) {
+	console.log(err, local);
 	local.firefox('http://ebay.ca', function(err, instance) {
 		instance.on('stop', function(msg) {
 			console.log('Local instance stopped', msg);
@@ -24,6 +25,6 @@ launch.local(function(err, local) {
 
 		setTimeout(function() {
 			instance.stop();
-		}, 5000);
+		}, 10000);
 	});
 });
