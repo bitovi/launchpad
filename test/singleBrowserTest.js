@@ -1,4 +1,4 @@
-var launch = require('./lib'),
+var launch = require('../lib'),
 	config = {
 		username : 'username',
 		password : 'password'
