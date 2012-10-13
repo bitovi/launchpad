@@ -1,6 +1,6 @@
-# Launchness
+# Launchpad
 
-Launch Browsers
+You can launch browsers! From NodeJS! Local ones! Browserstack ones!
 
 ## API
 
