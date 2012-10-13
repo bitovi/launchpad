@@ -1,13 +1,20 @@
 {
-	"name": "launchness",
-	"description": "Launch browsers",
+	"name": "launchpad",
+	"description": "You can launch browsers! From NodeJS! Local ones! Browserstack ones!",
 	"version": "0.0.1",
-	"homepage": "https://github.com/daffl/launchness",
-	"author": "David Luecke",
+	"homepage": "https://github.com/ekryski/launchpad",
+	"author": "Erik Kryski, David Luecke",
 	"main": "lib/index.js",
 	"engines": {
 		"node": "~0.6"
 	},
+  "scripts" : {
+    "test" : "mocha test/local/ --ignore-leaks -t 10000"
+  },
+  "devDependencies" : {
+    "mocha" : ">= 1.6.0",
+    "expect.js" : ">= 0.1.2"
+  },
 	"dependencies": {
     "browserstack" : ">= 0.1.0",
     "plist": ">= 0.4.0"

@@ -3,6 +3,7 @@ var launch = require('../lib');
 var browsers = ['opera', 'firefox', 'safari'];
 
 launch.local(function(err, local) {
+	console.dir(local);
   Object.keys(browsers).forEach(function(browser) {
     if (local[browsers[browser]]){
       local[browsers[browser]]('http://ebay.ca', function(err, instance) {
