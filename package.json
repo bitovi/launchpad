@@ -16,6 +16,7 @@
     "expect.js" : ">= 0.1.2"
   },
 	"dependencies": {
+    "deferred" : ">= 0.6.0",
     "browserstack" : ">= 0.1.0",
     "plist": ">= 0.4.0"
 	}

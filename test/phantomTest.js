@@ -1,7 +1,7 @@
 var launch = require('../lib');
 
 launch.local(function(err, local) {
-  local.phantom('hello.js', function(err, instance) {
+  local.phantom(__dirname + '/hello.js', function(err, instance) {
     instance.on('stop', function(msg) {
       console.log('Local instance stopped', msg);
     });
