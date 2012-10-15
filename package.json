@@ -1,9 +1,9 @@
 {
 	"name": "launchpad",
-	"description": "You can launch browsers! From NodeJS! Local ones! Browserstack ones!",
-	"version": "0.0.1",
+	"description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
+	"version": "0.1.0",
 	"homepage": "https://github.com/ekryski/launchpad",
-	"author": "Erik Kryski, David Luecke",
+	"author": "Eric Kryski, David Luecke",
 	"main": "lib/index.js",
 	"engines": {
 		"node": "~0.6"
@@ -16,6 +16,7 @@
     "expect.js" : ">= 0.1.2"
   },
 	"dependencies": {
+    "restify" : ">= 1.4.4",
     "q" : ">= 0.8.9",
     "browserstack" : ">= 0.1.0",
     "plist": ">= 0.4.0"
