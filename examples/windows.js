@@ -1,4 +1,4 @@
-var launch = require('../lib');
+var launch = require('.');
 var win = require('../lib/local/platform/windows');
 
 launch.local(function(err, local) {

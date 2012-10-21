@@ -1,4 +1,4 @@
-var launch = require('../lib');
+var launch = require('.');
 
 launch.local(function(err, local) {
   local.phantom(__dirname + '/hello.js', function(err, instance) {

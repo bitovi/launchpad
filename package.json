@@ -17,8 +17,10 @@
   },
 	"dependencies": {
     "restify" : ">= 1.4.4",
-    "q" : ">= 0.8.9",
+    "async" : ">= 0.1.20",
     "browserstack" : ">= 0.1.0",
-    "plist": ">= 0.4.0"
+    "plist": ">= 0.4.0",
+    "winston" : ">= 0.6.0",
+    "underscore" : ">= 1.4.0"
 	}
 }
