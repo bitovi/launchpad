@@ -2,12 +2,13 @@ var launch = require('../lib');
 
 launch.remote({
 	port : 8080,
+	host : 'localhost',
 	username : 'launcher',
 	password : 'testing'
 }, function(err, api) {
 	console.log(api);
 	api('http://github.com', {
-		browser : 'safari',
+		browser : 'opera',
 		version : 'latest'
 	}, function(err, instance) {
 		instance.status(function() {
