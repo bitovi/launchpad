@@ -1,10 +1,29 @@
 # Launchpad
 
-You can launch browsers! From NodeJS! Local ones! Browserstack ones!
+You can launch browsers! With NodeJS!
+
+* __Local browsers__ for MacOS, Windows and Linux (like) operating systems
+* __[BrowserStack](http://browserstack.com)__ browsers using the BrowserStack API
+* __Remote browsers__ using the launchpad server
 
 ## API
 
-    var launch = require('node-browserlauncher');
+The general API for any launcher (`<type>`) looks like this:
+
+    var launch = require('launchpad');
+    launch.<type>(configuration, function(error, launcher) {
+      launcher.browsers // -> List of available browsers
+      launcher(url, configuration, function(error, instance) {
+        instance // -> A browser instance
+        instance.id // -> unique instance id
+        instance.stop(callback) // -> Stop the instance
+        instance.status(callback) // -> Get status information about the instance
+      });
+    });
+
+## Local launchers
+
+Local launchers look up all currently installed browsers and allow you to start new browser processes.
 
     // Launch a local browser
     launch.local(function(err, local) {
@@ -17,6 +36,11 @@ You can launch browsers! From NodeJS! Local ones! Browserstack ones!
       });
     });
 
+## Browserstack
+
+BrowserStack is a great cross-browser testing tool and offers API access to any account that is on a monthly plan.
+Launchpad allows you to start BrowserStack workers through its API like this:
+
     launch.browserstack({
         username : 'user',
         password : 'password'
@@ -28,5 +52,44 @@ You can launch browsers! From NodeJS! Local ones! Browserstack ones!
           setTimeout(function() {
             instance.stop();
           }, 5000);
+      });
+    });
+
+Behind the scenes we have the [node-browserstack]() module do all the good stuff (API calls) for us.
+
+## Remote systems
+
+Launchpad also allows you to start browsers on other systems that are running the Launchpad server.
+
+### The launchpad server
+
+The launchpad server is a simple implementation of the [BrowserStack API (Version 1)]() which provides a
+RESTful interface to start and stop browsers. You can set up a Launchpad server like this:
+
+    launch.server({
+      username : 'launcher',
+      password : 'testing'
+    }).listen(8080, function () {
+      console.log('Listeining...');
+    });
+
+### Launching remote servers
+
+Because the Launchpad server is compatible with the BrowserStack API (Version 1), you could basically use
+any BrowserStack API client, connect to the server and start browsers.
+
+The included remote launcher does exactly that by wrapping BrowserStack launcher and pointing it to
+the given host:
+
+    launch.remote({
+      host : 'ie7machine',
+      username : 'launcher',
+      password : 'testing'
+    }, function(err, api) {
+      api.browsers // -> List of browsers found on ie7machine
+      api('http://github.com', {
+        browser : 'safari',
+        version : 'latest'
+      }, function(err, instance) {
       });
     });
