@@ -5,18 +5,17 @@ launch.remote({
 	host : 'localhost',
 	username : 'launcher',
 	password : 'testing'
-}, function(err, api) {
-	console.log(api);
-	api('http://github.com', {
-		browser : 'opera',
+}, function(err, launcher) {
+	launcher('http://github.com', {
+		browser : 'firefox',
 		version : 'latest'
-	}, function(err, instance) {
-		instance.status(function() {
-			console.log(arguments);
-			console.dir(instance);
+	}, function(err, worker) {
+		console.log('Started browser', worker.id);
+		worker.status(function(status) {
+			console.log('Browser status is:', status);
 			setTimeout(function() {
-				instance.stop(function(err, worker) {
-					console.log(worker);
+				worker.stop(function(err, worker) {
+					console.log('Stopped browser', worker);
 				});
 			}, 5000);
 		})
