@@ -3,7 +3,15 @@
   "description" : "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
   "version" : "0.1.0",
   "homepage" : "https://github.com/ekryski/launchpad",
-  "author" : "Eric Kryski, David Luecke",
+  "author": {
+    "name": "Eric Kryski",
+    "email": "e.kryski@gmail.com",
+    "web": "http://erickryski.com"
+  },
+  "contributors": [{
+    "name": "David Luecke",
+    "email": "daff@neyeon.com"
+  }],
   "licenses": [{
     "type": "MIT",
     "url": "http://opensource.org/licenses/MIT"
