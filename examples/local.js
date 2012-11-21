@@ -3,7 +3,7 @@ var launch = require('../lib');
 launch.local(function(err, launcher) {
 	// User the launcher api
 	launcher('http://github.com/ekryski', {
-		browser : 'opera'
+		browser : 'canary'
 	}, function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
@@ -18,7 +18,7 @@ launch.local(function(err, launcher) {
 	});
 
 	// Short hand launcher
-	launcher.firefox('http://github.com/daffl', function(error, worker) {
+	launcher.aurora('http://github.com/daffl', function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
 			return;
