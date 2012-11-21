@@ -5,6 +5,10 @@ launch.local(function(err, launcher) {
 	launcher('http://github.com/ekryski', {
 		browser : 'opera'
 	}, function(error, worker) {
+		if(error) {
+			console.log('Error:', error);
+			return;
+		}
 		console.log('Launched Opera. Process id:', worker.id);
 		setTimeout(function() {
 			worker.stop(function() {
@@ -14,7 +18,11 @@ launch.local(function(err, launcher) {
 	});
 
 	// Short hand launcher
-	launcher.firefox('http://github.com/daffl', function(err, worker) {
+	launcher.firefox('http://github.com/daffl', function(error, worker) {
+		if(error) {
+			console.log('Error:', error);
+			return;
+		}
 		console.log('Launched Firefox. Process id:', worker.id);
 		setTimeout(function() {
 			worker.stop(function() {
