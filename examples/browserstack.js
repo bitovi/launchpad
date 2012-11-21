@@ -1,8 +1,8 @@
 var launch = require('../lib');
 
 launch.browserstack({
-	username : '<your browserstack username>',
-	password : 'password'
+	username : '<browserstack username>',
+	password : '<browserstack password>'
 }, function(err, launcher) {
 	launcher('http://github.com', {
 		browser : 'firefox',
@@ -10,7 +10,7 @@ launch.browserstack({
 		os : 'win'
 	}, function(err, worker) {
 		console.log('Started browser', worker.id);
-		worker.status(function(status) {
+		worker.status(function(error, status) {
 			console.log('Browser status is:', status);
 			setTimeout(function() {
 				worker.stop(function(err, worker) {
