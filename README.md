@@ -55,7 +55,8 @@ Launchpad allows you to start BrowserStack workers through its API like this:
       });
     });
 
-Behind the scenes we have the [node-browserstack]() module do all the good stuff (API calls) for us.
+Behind the scenes we have the [node-browserstack](https://github.com/scottgonzalez/node-browserstack)
+module do all the work (API calls) for us.
 
 ## Remote systems
 
@@ -63,8 +64,8 @@ Launchpad also allows you to start browsers on other systems that are running th
 
 ### The launchpad server
 
-The launchpad server is a simple implementation of the [BrowserStack API (Version 1)]() which provides a
-RESTful interface to start and stop browsers. You can set up a Launchpad server like this:
+The launchpad server is a simple implementation of the [BrowserStack API (Version 1)](https://github.com/browserstack/api)
+which provides a RESTful interface to start and stop browsers. You can set up a Launchpad server like this:
 
     launch.server({
       username : 'launcher',
