@@ -3,22 +3,22 @@ var launch = require('../lib');
 launch.local(function(err, launcher) {
 	// User the launcher api
 	launcher('http://github.com/ekryski', {
-		browser : 'canary'
+		browser : 'chrome'
 	}, function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
 			return;
 		}
-		console.log('Launched Opera. Process id:', worker.id);
+		console.log('Launched Safari. Process id:', worker.id);
 		setTimeout(function() {
 			worker.stop(function() {
-				console.log('Opera stopped');
+				console.log('Safari stopped');
 			});
-		}, 4000);
+		}, 10000);
 	});
 
 	// Short hand launcher
-	launcher.aurora('http://github.com/daffl', function(error, worker) {
+	launcher.firefox('http://github.com/daffl', function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
 			return;
@@ -28,6 +28,6 @@ launch.local(function(err, launcher) {
 			worker.stop(function() {
 				console.log('Firefox stopped');
 			});
-		}, 2000);
+		}, 6000);
 	});
 });
