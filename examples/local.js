@@ -28,6 +28,6 @@ launch.local(function(err, launcher) {
 			worker.stop(function() {
 				console.log('Firefox stopped');
 			});
-		}, 6000);
+		}, 5000);
 	});
 });
