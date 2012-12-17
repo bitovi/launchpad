@@ -3,16 +3,16 @@ var launch = require('../lib');
 launch.local(function(err, launcher) {
 	// User the launcher api
 	launcher('http://github.com/ekryski', {
-		browser : 'chrome'
+		browser : 'chromium'
 	}, function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
 			return;
 		}
-		console.log('Launched Safari. Process id:', worker.id);
+		console.log('Launched chromium. Process id:', worker.id);
 		setTimeout(function() {
 			worker.stop(function() {
-				console.log('Safari stopped');
+				console.log('chromium stopped');
 			});
 		}, 10000);
 	});
