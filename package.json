@@ -1,48 +1,51 @@
 {
-  "name" : "launchpad",
-  "description" : "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
-  "version" : "0.2.0",
-  "homepage" : "https://github.com/ekryski/launchpad",
-  "author": {
-    "name": "Eric Kryski",
-    "email": "e.kryski@gmail.com",
-    "web": "http://erickryski.com"
-  },
-  "contributors": [{
-    "name": "David Luecke",
-    "email": "daff@neyeon.com"
-  }],
-  "licenses": [{
-    "type": "MIT",
-    "url": "http://opensource.org/licenses/MIT"
-  }],
-  "main" : "lib/index.js",
-  "engines" : {
-    "node" : "~0.8"
-  },
-  "scripts" : {
-    "test" : "mocha test"
-  },
-  "devDependencies" : {
-    "mocha" : ">= 1.6.0",
-    "expect.js" : ">= 0.1.2"
-  },
-  "dependencies" : {
-    "restify" : ">= 1.4.4",
-    "async" : ">= 0.1.20",
-    "browserstack" : ">= 0.1.0",
-    "plist" : ">= 0.4.0",
-    "winston" : ">= 0.6.0",
-    "underscore" : ">= 1.4.0"
-  },
-  "keywords": [
-    "browsers",
-    "launcher",
-    "chrome",
-    "ie",
-    "firefox",
-    "opera",
-    "phantomjs",
-    "browserstack"
-  ]
+	"name": "launchpad",
+	"description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
+	"version": "0.2.0",
+	"homepage": "https://github.com/ekryski/launchpad",
+	"author": {
+		"name": "Eric Kryski",
+		"email": "e.kryski@gmail.com",
+		"web": "http://erickryski.com"
+	},
+	"contributors": [
+		{
+			"name": "David Luecke",
+			"email": "daff@neyeon.com"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://opensource.org/licenses/MIT"
+		}
+	],
+	"main": "lib/index.js",
+	"engines": {
+		"node": "~0.8"
+	},
+	"scripts": {
+		"test": "mocha test"
+	},
+	"devDependencies": {
+		"mocha": ">= 1.6.0",
+		"expect.js": ">= 0.1.2"
+	},
+	"dependencies": {
+		"async": "~0.2.9",
+		"browserstack": "~0.2.0",
+		"plist": "~0.4.3",
+		"winston": "~0.7.2",
+		"underscore": "~1.5.1"
+	},
+	"keywords": [
+		"browsers",
+		"launcher",
+		"chrome",
+		"ie",
+		"firefox",
+		"opera",
+		"phantomjs",
+		"browserstack"
+	]
 }
