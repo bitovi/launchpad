@@ -2,6 +2,11 @@ var assert = require('assert');
 var http = require('http');
 var connect = require('connect');
 var local = require('../lib/local');
+var useragent = require('useragent');
+var familyMapping = {
+  canary: 'chrome',
+  phantom: 'phantomjs'
+}
 var server = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
@@ -30,7 +35,10 @@ describe('Local browser launcher tests', function() {
           }
 
           server.once('request', function(req, res) {
-            // TODO here we could check the useragent to make sure it is the expected browser
+            var userAgent = useragent.parse(req.headers['user-agent']);
+            var expected = familyMapping[name] || name;
+
+            assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
             instance.stop(done);
           });
         });

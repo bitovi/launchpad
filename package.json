@@ -31,7 +31,8 @@
     "mocha": "~1.6.0",
     "expect.js": "~0.1.2",
     "grunt": "~0.4.1",
-    "grunt-release": "~0.5.1"
+    "grunt-release": "~0.5.1",
+    "useragent": "~2.0.7"
   },
   "dependencies": {
     "restify": "~1.4.4",
