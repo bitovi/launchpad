@@ -1,6 +1,5 @@
 var assert = require('assert');
 var http = require('http');
-var connect = require('connect');
 var local = require('../lib/local');
 var useragent = require('useragent');
 var familyMapping = {
@@ -24,8 +23,8 @@ describe('Local browser launcher tests', function() {
     });
   });
 
-  local.platform.supported().forEach(function(name) {
-    it('Launches ' + name + ' browser', function(done) {
+  Object.keys(local.platform).forEach(function(name) {
+    it('Launches ' + name + ' browser on ' + process.platform, function(done) {
       local(function(error, launcher) {
         launcher[name]('http://localhost:6785', function(error, instance) {
           if(error) {
