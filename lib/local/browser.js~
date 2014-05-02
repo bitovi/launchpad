@@ -17,8 +17,11 @@ module.exports = function (browser) {
         return current;
       }
 
+console.log("Not found in default location")
       // Run the pathQuery to see if we can find it somewhere else
+console.log(current.pathQuery);
       return Q.nfcall(exec, current.pathQuery).then(function (stdout) {
+console.log("path query")
         var path = utils.getStdout(stdout);
 
         if (!path) {
@@ -28,10 +31,7 @@ module.exports = function (browser) {
         // Set path
         current.path = path;
         return current;
-      }, function() {
-        // Exec errors most likely mean the browser doesn't exist
-        return null;
-      });
+      }, function() { console.log(arguments); });
     }).then(function (current) {
       if (current !== null) {
         // Set the command to the path
