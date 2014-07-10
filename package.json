@@ -1,7 +1,7 @@
 {
   "name": "launchpad",
   "description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "homepage": "https://github.com/ekryski/launchpad",
   "author": {
     "name": "Eric Kryski",
