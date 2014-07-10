@@ -34,7 +34,10 @@ Local launchers look up all currently installed browsers and allow you to start 
 
     // Launch a local browser
     launch.local(function(err, local) {
-      local.browsers // -> List of all browsers found locally
+      launcher.browsers(function(error, browsers) {
+        // -> List of all browsers found locally with version
+      });
+      
       local.firefox('http://url', function(err, instance) {
         // An instance is an event emitter
         instance.on('stop', function() {
@@ -53,7 +56,10 @@ Launchpad allows you to start BrowserStack workers through its API like this:
         password : 'password'
       },
       function(err, browserstack) {
-        browserstack.browsers // -> List of all browsers
+        launcher.browsers(function(error, browsers) {
+          // -> List of all Browserstack browsers
+        });
+        
         browserstack.ie('http://url', function(err, instance) {
           // Shut the instance down after 5 seconds
           setTimeout(function() {
@@ -94,7 +100,10 @@ the given host:
       username : 'launcher',
       password : 'testing'
     }, function(err, api) {
-      api.browsers // -> List of browsers found on ie7machine
+      launcher.browsers(function(error, browsers) {
+        // -> List of all browsers found on ie7machine
+      });
+      
       api('http://github.com', {
         browser : 'safari',
         version : 'latest'
