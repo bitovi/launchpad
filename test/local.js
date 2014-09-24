@@ -4,7 +4,8 @@ var local = require('../lib/local');
 var useragent = require('useragent');
 var familyMapping = {
   canary: 'chrome',
-  phantom: 'phantomjs'
+  phantom: 'phantomjs',
+  nodeWebkit: 'chrome'
 }
 var server = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
