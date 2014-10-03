@@ -19,6 +19,8 @@ describe('Local browser launcher tests', function() {
         assert.ok(!error, 'No error discovering browsers');
         assert.ok(browsers.length, 'Found at least one browser');
         assert.ok(browsers[0].version, 'First browser has a version');
+        assert.ok(browsers[0].path, 'First browser has a path');
+        assert.ok(browsers[0].binPath, 'First browser has a binPath');
         done();
       });
     });
