@@ -6,7 +6,7 @@ var familyMapping = {
   canary: 'chrome',
   phantom: 'phantomjs',
   nodeWebkit: 'chrome'
-}
+};
 var server = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
@@ -36,7 +36,7 @@ describe('Local browser launcher tests', function() {
             return done();
           }
 
-          server.once('request', function(req, res) {
+          server.once('request', function(req) {
             var userAgent = useragent.parse(req.headers['user-agent']);
             var expected = familyMapping[name] || name;
 
