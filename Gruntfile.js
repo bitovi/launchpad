@@ -8,14 +8,21 @@ module.exports = function (grunt) {
         timeout: 60000,
         reporter: 'spec'
       },
-
       all: { src: ['test/**/*.js'] }
+    },
+    jshint: {
+      options: {
+        jshintrc: '.jshintrc'
+      },
+      lib: ['lib/**/*.js', 'Gruntfile.js'],
+      test: ['test/**/*.js']
     }
   });
 
-  // Default task.
-  grunt.registerTask('test', 'simplemocha');
+  grunt.registerTask('default', 'test');
+  grunt.registerTask('test', [ 'jshint', 'simplemocha' ]);
 
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-release');
   grunt.loadNpmTasks('grunt-simple-mocha');
-}
+};

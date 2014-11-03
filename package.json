@@ -8,6 +8,10 @@
     "email": "e.kryski@gmail.com",
     "web": "http://erickryski.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:ekryski/launchpad.git"
+  },
   "contributors": [
     {
       "name": "David Luecke",
