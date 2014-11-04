@@ -1,5 +1,7 @@
 # Launchpad
 
+[![Build Status](https://travis-ci.org/ekryski/launchpad.svg)](https://travis-ci.org/ekryski/launchpad)
+
 You can launch browsers! With NodeJS!
 
 * __Local browsers__ for MacOS, Windows and Linux (like) operating systems
