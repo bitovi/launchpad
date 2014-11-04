@@ -29,7 +29,7 @@
     "node": "~0.10"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test --stack"
   },
   "devDependencies": {
     "mocha": "~1.6.0",
