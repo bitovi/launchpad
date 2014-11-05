@@ -13,23 +13,23 @@ You can launch browsers! With NodeJS!
 The general API for any launcher (`<type>`) looks like this:
 
 ```js
-  var launch = require('launchpad');
-  launch.<type>(configuration, function(error, launcher) {
-    launcher.browsers(function(error, browsers) {
-      // -> List of available browsers with version
-    });
-
-    launcher(url, configuration, function(error, instance) {
-      instance // -> A browser instance
-      instance.id // -> unique instance id
-      instance.stop(callback) // -> Stop the instance
-      instance.status(callback) // -> Get status information about the instance
-    });
-
-    launcher.<browsername>(url, function(error, instance) {
-      // Same as above
-    });
+var launch = require('launchpad');
+launch.<type>(configuration, function(error, launcher) {
+  launcher.browsers(function(error, browsers) {
+    // -> List of available browsers with version
   });
+
+  launcher(url, configuration, function(error, instance) {
+    instance // -> A browser instance
+    instance.id // -> unique instance id
+    instance.stop(callback) // -> Stop the instance
+    instance.status(callback) // -> Get status information about the instance
+  });
+
+  launcher.<browsername>(url, function(error, instance) {
+    // Same as above
+  });
+});
 ```
 
 ## Local launchers
@@ -37,19 +37,19 @@ The general API for any launcher (`<type>`) looks like this:
 Local launchers look up all currently installed browsers and allow you to start new browser processes.
 
 ```js
-  // Launch a local browser
-  launch.local(function(err, local) {
-    launcher.browsers(function(error, browsers) {
-      // -> List of all browsers found locally with version
-    });
-    
-    local.firefox('http://url', function(err, instance) {
-      // An instance is an event emitter
-      instance.on('stop', function() {
-        console.log('Terminated local firefox');
-      });
+// Launch a local browser
+launch.local(function(err, local) {
+  launcher.browsers(function(error, browsers) {
+    // -> List of all browsers found locally with version
+  });
+  
+  local.firefox('http://url', function(err, instance) {
+    // An instance is an event emitter
+    instance.on('stop', function() {
+      console.log('Terminated local firefox');
     });
   });
+});
 ```
 
 ## Browserstack

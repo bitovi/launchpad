@@ -1,5 +1,0 @@
-{
-  "name": "node-webkit-launchpad",
-  "main": "index.html",
-  "node-remote": "<local>"
-}
