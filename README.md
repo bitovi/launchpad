@@ -70,7 +70,12 @@ launch.browserstack({
     browserstack.ie('http://url', function(err, instance) {
       // Shut the instance down after 5 seconds
       setTimeout(function() {
-        instance.stop();
+        instance.stop(function (err) {
+          if(err) {
+            console.log(err);
+          }
+          console.log('Browser instance has stopped');
+        });
       }, 5000);
   });
 });
