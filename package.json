@@ -42,13 +42,13 @@
     "useragent": "~2.0.7"
   },
   "dependencies": {
-    "async": "~0.1.20",
-    "browserstack": "~0.2.0",
+    "async": "^0.1.20",
+    "browserstack": "^1.1.0",
     "debug": "^2.1.0",
     "plist": "~0.4.0",
     "q": "^1.0.1",
-    "restify": "~1.4.4",
-    "underscore": "~1.4.0"
+    "restify": "^1.4.4",
+    "underscore": "^1.4.0"
   },
   "keywords": [
     "browsers",
