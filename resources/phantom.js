@@ -1,5 +1,6 @@
 // A PhantomJS sript that simply opens the web page passed as the command line parameter
 var page = require('webpage').create();
+var system = require('system');
 
 page.onError = function(msg, trace) {
   var msgStack = ['ERROR: ' + msg];
@@ -18,4 +19,4 @@ page.onConsoleMessage = function(msg, lineNum, sourceId) {
   console.log('CONSOLE: ' + msg + tail);
 };
 
-page.open(phantom.args[0], function () {});
+page.open(system.args[1], function () {});
