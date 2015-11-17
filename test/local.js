@@ -60,7 +60,7 @@ describe('Local browser launcher tests', function() {
     decache(path.join(__dirname, '..', 'lib', 'local', 'index.js'));
 
     process.env.LAUNCHPAD_BROWSERS = 'phantom';
-    process.env.LAUNCHPAD_PHANTOM = process.platform.startsWith('win') ?
+    process.env.LAUNCHPAD_PHANTOM = /^win/.test(process.platform) ?
         path.join(__dirname, '..', 'node_modules', 'phantomjs', 'lib', 'phantom', 'phantomjs.exe') :
         path.join(__dirname, '..', 'node_modules', 'phantomjs', 'bin', 'phantomjs');
 
