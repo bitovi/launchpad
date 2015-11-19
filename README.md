@@ -1,5 +1,4 @@
 # Launchpad
-Touched
 [![Build Status](https://travis-ci.org/ekryski/launchpad.svg)](https://travis-ci.org/ekryski/launchpad)
 
 You can launch browsers! With NodeJS!
@@ -34,7 +33,7 @@ launch.<type>(configuration, function(error, launcher) {
 
 ## Local launchers
 
-Local launchers look up all currently installed browsers and allow you to start new browser processes.
+Local launchers look up all currently installed browsers (unless limited by LAUNCHPAD_BROWSERS - see below for details) and allow you to start new browser processes.
 
 ```js
 // Launch a local browser
@@ -51,6 +50,16 @@ launch.local(function(err, local) {
   });
 });
 ```
+
+### Environment variables impacting local browsers detection
+
+By default Launchpad looks up all installed browsers. To speed-up this process you can define the following env variables:
+  * `LAUNCHPAD_BROWSERS` - comma delimited list of browsers you want to use, e.g. `LAUNCHPAD_BROWSERS=chrome,firefox,opera`. Other browsers will not be detected even if they are installed.
+  * `LAUNCHPAD_<browser>` - specifies where given browser is installed so that Launchpad does not need to look for it, e.g.
+    `LAUNCHPAD_CHROME=/usr/bin/chromium`
+
+The following browser names are recognized: `chrome`, `firefox`, `safari`, `ie`, `opera`, `canary`, `aurora`, `phantom`, `nodeWebKit`.
+Not all platforms support all browsers - see [platform](lib/local/platform) for details.
 
 ## Browserstack
 
