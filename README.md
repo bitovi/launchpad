@@ -139,6 +139,10 @@ launch.remote({
 
 ## Changelog
 
+__0.5.0__
+
+- Added `LAUNCHPAD_BROWSERS` and `LAUNCHPAD_<browser>` env vars support ([#52](https://github.com/ekryski/launchpad/pull/52))
+
 __0.4.0__
 
 - Output PhantomJS errors and console.logs ([#35](https://github.com/ekryski/launchpad/pull/35))
