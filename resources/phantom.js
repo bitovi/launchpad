@@ -2,6 +2,11 @@
 var page = require('webpage').create();
 var system = require('system');
 
+page.viewportSize = {
+  width: 1280,
+  height: 800
+};
+
 page.onError = function(msg, trace) {
   var msgStack = ['ERROR: ' + msg];
   if (trace && trace.length) {
