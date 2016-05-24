@@ -42,13 +42,19 @@ describe('Local browser launcher tests', function() {
               return done();
             }
 
-            server.once('request', function (req) {
-              var userAgent = useragent.parse(req.headers['user-agent']);
-              var expected = familyMapping[name] || name;
+            function request(req) {
+              if (req.url === '/') {
+                var userAgent = useragent.parse(req.headers['user-agent']);
+                var expected = familyMapping[name] || name;
 
-              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
-              instance.stop(done);
-            });
+                assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
+                instance.stop(done);
+              } else {
+                server.once('request', request);
+              }
+            }
+
+            server.once('request', request);
           });
         });
       });
@@ -70,8 +76,8 @@ describe('Local browser launcher tests', function() {
       local(function (error, launcher) {
         launcher.browsers(function (error, browsers) {
           assert.ok(!error, 'No error discovering browsers');
-          assert.ok(browsers.length == 1, 'Found PhantomJS browser');
-          assert.ok(browsers[0].path == process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
+          assert.equal(browsers.length, 1, 'Found PhantomJS browser');
+          assert.equal(browsers[0].path, process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
           done();
         });
       });
