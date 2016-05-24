@@ -1,7 +1,8 @@
 sudo: false
 language: node_js
 env:
-  - DISPLAY=:99.0
+  - DISPLAY=":99.0"
+    DEBUG=*
 before_install:
   - "sh -e /etc/init.d/xvfb start"
 node_js:
