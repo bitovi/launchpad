@@ -42,13 +42,19 @@ describe('Local browser launcher tests', function() {
               return done();
             }
 
-            server.once('request', function (req) {
-              var userAgent = useragent.parse(req.headers['user-agent']);
-              var expected = familyMapping[name] || name;
+            function request(req) {
+              if (req.url === '/') {
+                var userAgent = useragent.parse(req.headers['user-agent']);
+                var expected = familyMapping[name] || name;
 
-              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
-              instance.stop(done);
-            });
+                assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
+                instance.stop(done);
+              } else {
+                server.once('request', request);
+              }
+            }
+
+            server.once('request', request);
           });
         });
       });
