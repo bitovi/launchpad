@@ -3,7 +3,7 @@ language: node_js
 env:
   global:
     - DISPLAY=":99.0"
-    - DEBUG=*
+    - DEBUG=launchpad:*
 before_install:
   - "sh -e /etc/init.d/xvfb start"
 node_js:
