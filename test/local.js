@@ -5,6 +5,7 @@ var decache = require('decache');
 var useragent = require('useragent');
 var familyMapping = {
   canary: 'chrome',
+  chromium: process.platform === 'darwin' ? 'chrome' : 'chromium',
   phantom: 'phantomjs',
   nodeWebkit: 'chrome'
 };
@@ -31,7 +32,7 @@ describe('Local browser launcher tests', function() {
         });
       });
     });
-
+    
     Object.keys(local.platform).forEach(function (name) {
       it('Launches ' + name + ' browser on ' + process.platform, function (done) {
         local(function (error, launcher) {
