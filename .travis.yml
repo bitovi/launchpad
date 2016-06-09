@@ -1,8 +1,10 @@
-sudo: false
+sudo: true
 language: node_js
 before_install:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - "sudo apt-get update"
+  - "sudo apt-get install chromium-browser"
 node_js:
-  - "0.11"
-  - "0.10"
+  - "0.12"
+  - "node"
