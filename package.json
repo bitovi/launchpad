@@ -3,21 +3,18 @@
   "description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
   "version": "0.5.3",
   "homepage": "https://github.com/ekryski/launchpad",
-  "author": {
+  "author": [{
     "name": "Eric Kryski",
     "email": "e.kryski@gmail.com",
     "web": "http://erickryski.com"
-  },
+  }, {
+    "name": "David Luecke",
+    "email": "daff@neyeon.com"
+  }],
   "repository": {
     "type": "git",
     "url": "git@github.com:ekryski/launchpad.git"
   },
-  "contributors": [
-    {
-      "name": "David Luecke",
-      "email": "daff@neyeon.com"
-    }
-  ],
   "licenses": [
     {
       "type": "MIT",
