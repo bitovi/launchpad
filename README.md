@@ -1,5 +1,5 @@
 # Launchpad
-[![Build Status](https://travis-ci.org/ekryski/launchpad.svg)](https://travis-ci.org/ekryski/launchpad)
+[![Build Status](https://travis-ci.org/daffl/launchpad.svg)](https://travis-ci.org/daffl/launchpad)
 
 You can launch browsers! With NodeJS!
 
