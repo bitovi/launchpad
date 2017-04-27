@@ -2,7 +2,7 @@
   "name": "launchpad",
   "description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
   "version": "0.5.4",
-  "homepage": "https://github.com/ekryski/launchpad",
+  "homepage": "https://github.com/bitovi/launchpad",
   "author": [
     {
       "name": "Eric Kryski",
@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:ekryski/launchpad.git"
+    "url": "git@github.com:bitovi/launchpad.git"
   },
   "licenses": [
     {

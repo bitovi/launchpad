@@ -136,21 +136,3 @@ launch.remote({
   });
 });
 ```
-
-## Changelog
-
-__0.5.0__
-
-- Added `LAUNCHPAD_BROWSERS` and `LAUNCHPAD_<browser>` env vars support ([#52](https://github.com/ekryski/launchpad/pull/52))
-
-__0.4.0__
-
-- Output PhantomJS errors and console.logs ([#35](https://github.com/ekryski/launchpad/pull/35))
-- Node Webkit support for MacOS and Windows ([#30](https://github.com/ekryski/launchpad/pull/30), [#34](https://github.com/ekryski/launchpad/pull/34))
-- Allow browsers to start multiple times even if they are already running ([#33](https://github.com/ekryski/launchpad/pull/33))
-- Fix Windows path and add JSHint ([#32](https://github.com/ekryski/launchpad/pull/32))
-- Expose `path` and `binPath` for detected browsers ([#31](https://github.com/ekryski/launchpad/pull/31))
-
-__0.3.0__
-
-- Major internal refactoring ([#25](https://github.com/ekryski/launchpad/pull/25))
