@@ -29,7 +29,12 @@
     "node": "^0.12"
   },
   "scripts": {
-    "test": "grunt test --stack"
+    "test": "grunt test --stack",
+    "publish": "git push origin && git push origin --tags",
+    "release:major": "npm version major && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:pre": "npm version prerelease && npm publish"
   },
   "devDependencies": {
     "decache": "^4.1.0",
