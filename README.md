@@ -58,7 +58,7 @@ By default Launchpad looks up all installed browsers. To speed-up this process y
   * `LAUNCHPAD_<browser>` - specifies where given browser is installed so that Launchpad does not need to look for it, e.g.
     `LAUNCHPAD_CHROME=/usr/bin/chromium`
 
-The following browser names are recognized: `chrome`, `firefox`, `safari`, `ie`, `opera`, `canary`, `aurora`, `phantom`, `nodeWebKit`.
+The following browser names are recognized: `chrome`, `firefox`, `safari`, `ie`, `edge`, `opera`, `canary`, `aurora`, `phantom`, `nodeWebKit`.
 Not all platforms support all browsers - see [platform](lib/local/platform) for details.
 
 ## Browserstack
