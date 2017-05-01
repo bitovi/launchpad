@@ -26,10 +26,10 @@
   ],
   "main": "lib/index.js",
   "engines": {
-    "node": "^0.12"
+    "node": ">= 4"
   },
   "scripts": {
-    "test": "grunt test --stack",
+    "test": "xvfb-maybe grunt test --stack",
     "publish": "git push origin && git push origin --tags",
     "release:major": "npm version major && npm publish",
     "release:minor": "npm version minor && npm publish",
@@ -47,7 +47,8 @@
     "grunt-simple-mocha": "^0.4.0",
     "mocha": "^3.0.2",
     "phantomjs-prebuilt": "^2.1.14",
-    "useragent": "^2.1.7"
+    "useragent": "^2.1.7",
+    "xvfb-maybe": "~0.2.1"
   },
   "dependencies": {
     "async": "^2.0.1",
