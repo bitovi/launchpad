@@ -37,7 +37,7 @@ Local launchers look up all currently installed browsers (unless limited by LAUN
 ```js
 // Launch a local browser
 launch.local(function(err, local) {
-  launcher.browsers(function(error, browsers) {
+  local.browsers(function(error, browsers) {
     // -> List of all browsers found locally with version
   });
   
@@ -57,7 +57,7 @@ By default Launchpad looks up all installed browsers. To speed-up this process y
   * `LAUNCHPAD_<browser>` - specifies where given browser is installed so that Launchpad does not need to look for it, e.g.
     `LAUNCHPAD_CHROME=/usr/bin/chromium`
 
-The following browser names are recognized: `chrome`, `firefox`, `safari`, `ie`, `edge`, `opera`, `canary`, `aurora`, `phantom`, `nodeWebKit`.
+The following browser names are recognized: `chrome`, `firefox`, `safari`, `ie`, `edge`, `opera`, `canary`, `aurora`, `electron`, `phantom`, `nodeWebKit`.
 Not all platforms support all browsers - see [platform](lib/local/platform) for details.
 
 ## Browserstack
@@ -71,7 +71,7 @@ launch.browserstack({
     password : 'password'
   },
   function(err, browserstack) {
-    launcher.browsers(function(error, browsers) {
+    browserstack.browsers(function(error, browsers) {
       // -> List of all Browserstack browsers
     });
     
