@@ -1,4 +1,4 @@
-// A PhantomJS sript that simply opens the web page passed as the command line parameter
+// A PhantomJS script that simply opens the web page passed as the command line parameter
 var page = require('webpage').create();
 var system = require('system');
 

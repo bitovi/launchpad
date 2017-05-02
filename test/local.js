@@ -116,8 +116,8 @@ describe('Local browser launcher tests', function() {
         local(function (error, launcher) {
           launcher.browsers(function (error, browsers) {
             assert.ok(!error, 'No error discovering browsers');
-            assert.ok(browsers.length == 1, 'Found PhantomJS browser');
-            assert.ok(browsers[0].path == process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
+            assert.equal(browsers.length, 1, 'Found PhantomJS browser');
+            assert.equal(browsers[0].path, process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
             done();
           });
         });
