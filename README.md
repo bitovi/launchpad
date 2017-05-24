@@ -1,4 +1,6 @@
 # Launchpad
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/bitovi/launchpad.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/bitovi/launchpad.svg)](https://travis-ci.org/bitovi/launchpad)
 
 You can launch browsers! With NodeJS!
