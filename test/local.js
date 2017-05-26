@@ -58,22 +58,68 @@ describe('Local browser launcher tests', function() {
 
   describe('Custom env settings', function () {
 
-    decache(path.join(__dirname, '..', 'lib', 'local', 'index.js'));
+    var node_modules = path.join(__dirname, '..', 'node_modules');
+    var local;
 
-    process.env.LAUNCHPAD_BROWSERS = 'phantom';
-    process.env.LAUNCHPAD_PHANTOM = /^win/.test(process.platform) ?
-        path.join(__dirname, '..', 'node_modules', 'phantomjs', 'lib', 'phantom', 'phantomjs.exe') :
-        path.join(__dirname, '..', 'node_modules', 'phantomjs', 'bin', 'phantomjs');
+    beforeEach(function () {
+      decache(path.join(__dirname, '..', 'lib', 'local', 'index.js'));
+    });
 
-    var local = require('../lib/local');
+    after(function () {
+      delete process.env.LAUNCHPAD_BROWSERS;
+    });
 
-    it('detects PhantomJS only due to env settings', function (done) {
-      local(function (error, launcher) {
-        launcher.browsers(function (error, browsers) {
-          assert.ok(!error, 'No error discovering browsers');
-          assert.ok(browsers.length == 1, 'Found PhantomJS browser');
-          assert.ok(browsers[0].path == process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
-          done();
+    describe('Electron', function () {
+
+      beforeEach(function () {
+        process.env.LAUNCHPAD_BROWSERS = 'electron';
+        process.env.LAUNCHPAD_ELECTRON = /^win/.test(process.platform) ?
+            path.join(node_modules, 'electron', 'dist', 'electron.exe') : process.platform == 'darwin' ?
+            path.join(node_modules, 'electron', 'dist', 'Electron.app', 'Contents', 'MacOS', 'Electron') :
+            path.join(node_modules, 'electron', 'dist', 'electron');
+
+        local = require('../lib/local');
+      });
+
+      after(function () {
+        delete process.env.LAUNCHPAD_ELECTRON;
+      });
+
+      it('is detected only due to env settings', function (done) {
+        local(function (error, launcher) {
+          launcher.browsers(function (error, browsers) {
+            assert.ok(!error, 'No error discovering browsers');
+            assert.equal(browsers.length, 1, 'Found Electron browser');
+            assert.equal(browsers[0].path, process.env.LAUNCHPAD_ELECTRON, 'Found Electron at selected location');
+            done();
+          });
+        });
+      });
+    });
+
+    describe('PhantomJS', function () {
+
+      beforeEach(function () {
+        process.env.LAUNCHPAD_BROWSERS = 'phantom';
+        process.env.LAUNCHPAD_PHANTOM = /^win/.test(process.platform) ?
+            path.join(node_modules, 'phantomjs-prebuilt', 'lib', 'phantom', 'phantomjs.exe') :
+            path.join(node_modules, 'phantomjs-prebuilt', 'bin', 'phantomjs');
+
+        local = require('../lib/local');
+      });
+
+      after(function () {
+        delete process.env.LAUNCHPAD_PHANTOM;
+      });
+
+      it('is detected only due to env settings', function (done) {
+        local(function (error, launcher) {
+          launcher.browsers(function (error, browsers) {
+            assert.ok(!error, 'No error discovering browsers');
+            assert.equal(browsers.length, 1, 'Found PhantomJS browser');
+            assert.equal(browsers[0].path, process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
+            done();
+          });
         });
       });
     });
