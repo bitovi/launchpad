@@ -5,6 +5,7 @@ var decache = require('decache');
 var useragent = require('useragent');
 var familyMapping = {
   canary: 'chrome',
+  electron: 'chrome',
   chromium: process.platform === 'darwin' ? 'chrome' : 'chromium',
   phantom: 'phantomjs',
   nodeWebkit: 'chrome'
@@ -16,10 +17,8 @@ var server = http.createServer(function (req, res) {
 
 describe('Local browser launcher tests', function() {
 
+  var local = require('../lib/local');
   describe('Default env settings', function () {
-
-    var local = require('../lib/local');
-
     it('does local browser and version discovery', function (done) {
       local(function (error, launcher) {
         launcher.browsers(function (error, browsers) {
@@ -32,7 +31,7 @@ describe('Local browser launcher tests', function() {
         });
       });
     });
-    
+
     Object.keys(local.platform).forEach(function (name) {
       it('Launches ' + name + ' browser on ' + process.platform, function (done) {
         local(function (error, launcher) {
@@ -50,6 +49,42 @@ describe('Local browser launcher tests', function() {
               assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
               instance.stop(done);
             });
+          });
+        });
+      });
+    });
+  });
+
+  describe('Supported Chrome Launcher', function () {
+    var url = 'http://localhost:6785';
+
+    it('should launch Chrome', function (done) {
+      local(function (error, launcher) {
+        if (error) return done(error);
+
+        launcher.chromeHeadfull(url, function (error, instance) {
+          if (error) return done(error);
+
+          server.once('request', function (req) {
+            var userAgent = useragent.parse(req.headers['user-agent']);
+            assert.equal(userAgent.family.toLowerCase(), 'chrome', 'Should be Chrome useragent');
+            instance.stop(done);
+          });
+        });
+      });
+    });
+
+    it('should launch Headless Chrome', function (done) {
+      local(function (error, launcher) {
+        if (error) return done(error);
+
+        launcher.chromeHeadless(url, function (error, instance) {
+          if (error) return done(error);
+
+          server.once('request', function (req) {
+            var userAgent = useragent.parse(req.headers['user-agent']);
+            assert.equal(userAgent.family.toLowerCase(), 'chrome', 'Should be Chrome useragent');
+            instance.stop(done);
           });
         });
       });
