@@ -14,3 +14,4 @@ node_js:
   - node
 addons:
   chrome: stable
+  firefox: "51.0"
