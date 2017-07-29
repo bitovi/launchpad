@@ -32,7 +32,11 @@ describe('Local browser launcher tests', function() {
       });
     });
 
-    Object.keys(local.platform).forEach(function (name) {
+    var browsers = Object.keys(local.platform);
+
+    console.log('Launch schedule:', browsers);
+
+    browsers.forEach(function (name) {
       it('Launches ' + name + ' browser on ' + process.platform, function (done) {
         local(function (error, launcher) {
           launcher[name]('http://localhost:6785', function (error, instance) {
@@ -46,7 +50,8 @@ describe('Local browser launcher tests', function() {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
 
-              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
+              console.log({name: name, family: userAgent.family});
+              assert.equal(userAgent.family.toLowerCase(), expected, 'User agent family should match browser family');
               instance.stop(done);
             });
           });
