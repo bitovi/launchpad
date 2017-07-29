@@ -5,7 +5,6 @@ var decache = require('decache');
 var useragent = require('useragent');
 var familyMapping = {
   canary: 'chrome',
-  electron: 'chrome',
   chromium: process.platform === 'darwin' ? 'chrome' : 'chromium',
   phantom: 'phantomjs',
   nodeWebkit: 'chrome'
