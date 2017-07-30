@@ -14,3 +14,4 @@ node_js:
   - node
 addons:
   chrome: beta
+  firefox: "38.4.0esr"
