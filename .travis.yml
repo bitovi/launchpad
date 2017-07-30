@@ -1,8 +1,6 @@
-dist: precise
-sudo: required
+sudo: true
 language: node_js
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then export DISPLAY=:99.0 && sh -e /etc/init.d/xvfb start; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install chromium-browser; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
@@ -15,4 +13,3 @@ node_js:
   - node
 addons:
   chrome: stable
-  firefox: "51.0"
