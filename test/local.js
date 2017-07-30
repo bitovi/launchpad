@@ -35,11 +35,6 @@ describe('Local browser launcher tests', function() {
     browsers.forEach(function (name) {
       var testTitle = 'Should launch ' + name + ' browser on ' + process.platform;
 
-      if (name === 'firefox') {
-        it.skip(testTitle);
-        return;
-      }
-
       it(testTitle, function (done) {
         local(function (error, launcher) {
           launcher[name]('http://localhost:6785', function (error, instance) {
