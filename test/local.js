@@ -32,9 +32,6 @@ describe('Local browser launcher tests', function() {
     });
 
     var browsers = Object.keys(local.platform);
-
-    console.log('Launch schedule:', browsers);
-
     browsers.forEach(function (name) {
       var testTitle = 'Should launch ' + name + ' browser on ' + process.platform;
 
@@ -56,7 +53,6 @@ describe('Local browser launcher tests', function() {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
 
-              console.log({name: name, family: userAgent.family});
               assert.equal(userAgent.family.toLowerCase(), expected, 'User agent family should match browser family');
               instance.stop(done);
             });
