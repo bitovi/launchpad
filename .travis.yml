@@ -12,4 +12,4 @@ node_js:
   - 4
   - node
 addons:
-  chrome: stable
+  chrome: beta
