@@ -29,7 +29,7 @@
     "node": ">= 4"
   },
   "scripts": {
-    "test": "xvfb-maybe grunt test --stack",
+    "test": "DEBUG=launchpad:* xvfb-maybe grunt test --stack",
     "publish": "git push origin && git push origin --tags",
     "release:major": "npm version major && npm publish",
     "release:minor": "npm version minor && npm publish",

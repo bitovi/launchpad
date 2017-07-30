@@ -1,5 +1,5 @@
 dist: trusty
-sudo: true
+sudo: false
 language: node_js
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update; fi
@@ -14,4 +14,4 @@ node_js:
   - node
 addons:
   chrome: stable
-  firefox: "51.0"
+  firefox: "52.2.1"
