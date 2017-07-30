@@ -1,3 +1,4 @@
+dist: trusty
 sudo: true
 language: node_js
 before_install:
