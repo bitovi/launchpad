@@ -1,3 +1,4 @@
+dist: trusty
 sudo: true
 language: node_js
 before_install:
@@ -11,3 +12,5 @@ os:
 node_js:
   - 4
   - node
+addons:
+  chrome: stable
