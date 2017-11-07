@@ -51,7 +51,7 @@
     "xvfb-maybe": "~0.2.1"
   },
   "dependencies": {
-    "async": "^2.0.1",
+    "async": "2.5.0",
     "browserstack": "^1.2.0",
     "debug": "^2.2.0",
     "plist": "^2.0.1",
