@@ -45,7 +45,7 @@
     "grunt-contrib-jshint": "^1.0.0",
     "grunt-release": "^0.14.0",
     "grunt-simple-mocha": "^0.4.0",
-    "mocha": "^3.0.2",
+    "mocha": "^5.0.3",
     "phantomjs-prebuilt": "^2.1.14",
     "useragent": "^2.1.7",
     "xvfb-maybe": "~0.2.1"
