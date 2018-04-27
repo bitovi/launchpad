@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "decache": "^4.1.0",
-    "electron": "^1.6.6",
+    "electron": "^1.8.5",
     "expect.js": "^0.3.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^1.2.0",
