@@ -53,7 +53,7 @@
   "dependencies": {
     "async": "^2.0.1",
     "browserstack": "^1.2.0",
-    "debug": "^2.2.0",
+    "debug": "^4.0.1",
     "plist": "^2.0.1",
     "q": "^1.4.1",
     "underscore": "^1.8.3"
