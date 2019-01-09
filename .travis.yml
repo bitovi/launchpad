@@ -9,5 +9,5 @@ os:
   - linux
   - osx
 node_js:
-  - 4
+  - 8
   - node
