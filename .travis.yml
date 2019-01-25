@@ -1,4 +1,4 @@
-sudo: false
+sudo: true
 dist: trusty
 language: node_js
 before_install:
@@ -8,7 +8,6 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask install chromium; fi
 os:
   - linux
-  - osx
 node_js:
   - 8
   - node
