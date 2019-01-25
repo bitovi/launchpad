@@ -69,7 +69,7 @@ describe('Local browser launcher tests', function() {
       delete process.env.LAUNCHPAD_BROWSERS;
     });
 
-    describe('Electron', function () {
+    /*describe('Electron', function () {
 
       beforeEach(function () {
         process.env.LAUNCHPAD_BROWSERS = 'electron';
@@ -95,7 +95,7 @@ describe('Local browser launcher tests', function() {
           });
         });
       });
-    });
+    });*/
 
     describe('PhantomJS', function () {
 
