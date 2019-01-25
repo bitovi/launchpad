@@ -6,8 +6,9 @@ node_js:
 
 matrix:
   include:
-      addons:
-        firefox: latest
+      - node_js: 8
+        addons:
+          firefox: latest
   
 os:
   - linux
