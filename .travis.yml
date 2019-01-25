@@ -11,6 +11,5 @@ before_install:
   
 os:
   - linux
-    dist: trusty
   - osx
 
