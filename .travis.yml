@@ -8,9 +8,10 @@ matrix:
         firefox: latest
     - os: osx
       osx_image: xcode10.1
-      homebrew:
-        casks:
-        - chromium
+      addons:
+        homebrew:
+          casks:
+          - chromium
 
 node_js: 8
 
