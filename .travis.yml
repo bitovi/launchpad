@@ -1,6 +1,9 @@
 sudo: true
 language: node_js
 
+node_js: 
+  - 8
+
 matrix:
   include:
     - os: linux
@@ -11,10 +14,5 @@ matrix:
             - chromium-browser
     - os: osx
       osx_image: xcode10.1
-      addons:
-        homebrew:
-          casks:
-          - chromium
 
-node_js: 8
   
