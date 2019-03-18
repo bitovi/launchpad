@@ -6,12 +6,13 @@ matrix:
     - os: linux
       addons:
         firefox: latest
+        apt:
+          packages:
+            - chromium-browser
     - os: osx
       osx_image: xcode10.1
       addons:
-        homebrew:
-          casks:
-          - chromium
+        chrome: stable
 
 node_js: 8
 
