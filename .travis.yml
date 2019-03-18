@@ -1,10 +1,19 @@
 sudo: true
 language: node_js
 
+os:
+  - linux
+  - osx
+    osx_image: xcode10.1
+
 node_js: 8
 
 addons:
-  firefox: latest
+  apt:
+    packages:
+      - chromium-browser
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update          ; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install chromium; fi
   
-os:
-  - linux
