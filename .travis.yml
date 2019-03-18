@@ -12,12 +12,9 @@ matrix:
     - os: osx
       osx_image: xcode10.1
       addons:
-        chrome: stable
+        homebrew:
+          casks:
+          - chromium
 
 node_js: 8
-
-addons:
-  apt:
-    packages:
-      - chromium-browser
   
