@@ -4,15 +4,20 @@ language: node_js
 node_js: 
   - 8
 
+dist: xenial
+
+services:
+  - xvfb
 matrix:
   include:
     - os: linux
       addons:
         firefox: latest
-        apt:
-          packages:
-            - chromium-browser
+        chrome: stable
     - os: osx
       osx_image: xcode10.1
+      addons:
+        chrome: stable
+
 
   
