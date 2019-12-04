@@ -12,8 +12,6 @@ matrix:
         chrome: stable
     - os: osx
       osx_image: xcode10.1
-      addons:
-        chrome: stable
 
 
   

@@ -3,7 +3,7 @@ var launch = require('../lib');
 launch.local(function(err, launcher) {
 	// User the launcher api
 	launcher('http://github.com/ekryski', {
-		browser: 'safari'
+		browser: 'chrome'
 	}, function(error, worker) {
 		if(error) {
 			console.log('Error:', error);
