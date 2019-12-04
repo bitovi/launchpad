@@ -13,9 +13,13 @@ matrix:
     - os: linux
       addons:
         firefox: latest
-        chrome: stable
+        apt:
+          packages:
+            - chromium-browser
     - os: osx
       osx_image: xcode10.1
+      addons:
+        chrome: stable
 
 
   
