@@ -4,20 +4,16 @@ language: node_js
 node_js: 
   - 8
 
-dist: xenial
+dist: trusty
 
-services:
-  - xvfb
-
-before_install:
-  - sudo apt-get update
-  - sudo apt-get -y install chromium-browser
-  
 matrix:
   include:
     - os: linux
       addons:
         firefox: latest
+        apt:
+          packages:
+            - chromium-browser
     - os: osx
       osx_image: xcode10.1
       addons:
