@@ -125,7 +125,7 @@ describe('Local browser launcher tests', function() {
     });
   });
 
-  describe.only('Clean option', function() {
+  describe('Clean option', function() {
     var local = require('../lib/local');
     var chrome;
 
