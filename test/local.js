@@ -46,7 +46,6 @@ describe('Local browser launcher tests', function() {
             server.once('request', function (req) {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
-
               assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
               instance.stop(done);
             });
@@ -124,4 +123,49 @@ describe('Local browser launcher tests', function() {
       });
     });
   });
+  if (process.platform === 'linux') {
+    describe('Clean option', function() {
+      var local = require('../lib/local');
+      var chrome;
+  
+      function makeTest(isHeadless, done) {
+        local(function (error, launcher) {
+          var args = isHeadless ? ['--headless'] : [];
+          launcher.chrome('http://localhost:6785', {clean: true, args: args}, function(error, instance) {
+  
+            if (error) return done(error);
+  
+            server.once('request', function () {
+              assert.ok(instance.options.clean);
+              assert.ok(instance.options.tmpdir);
+              assert.notEqual(chrome.id, instance.id);
+              setTimeout(function () {
+                instance.stop(done());
+              }, 1000);
+            });
+          });
+        });
+      }
+  
+      beforeEach(function() {
+        local(function (error, launcher) {
+          launcher.chrome('http://localhost:6785', {clean: true}, function(error, instance) {
+            chrome = instance;
+          });
+        });
+      });
+  
+      afterEach(function() {
+        chrome.stop();
+      });
+  
+      it('Launches Chrome in clean mode', function(done) {
+        makeTest(false, done);
+      });
+  
+      it('Launches headless Chrome in clean mode', function(done) {
+        makeTest(true, done);
+      });
+    });
+  }
 });

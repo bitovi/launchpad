@@ -9,10 +9,9 @@ matrix:
     - os: linux
       addons:
         firefox: latest
-        apt:
-          packages:
-            - chromium-browser
+        chrome: stable
     - os: osx
       osx_image: xcode10.1
+
 
   

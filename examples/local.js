@@ -30,4 +30,22 @@ launch.local(function(err, launcher) {
 			});
 		}, 5000);
 	});
+
+	launcher.chrome('http://github.com/bitovi/launchpad', {
+		clean: true,
+		args: [
+			'--headless'
+		]
+	}, function(error, worker) {
+		if(error) {
+			console.log('Error:', error);
+			return;
+		}
+		console.log('Launched headless Chrome. Process id:', worker.id);
+		setTimeout(function() {
+			worker.stop(function() {
+				console.log('Chrome stopped');
+			});
+		}, 5000);
+	});
 });
