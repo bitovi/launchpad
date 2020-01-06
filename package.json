@@ -58,7 +58,7 @@
     "plist": "^2.0.1",
     "q": "^1.4.1",
     "rimraf": "^3.0.0",
-    "underscore": "^1.8.3"
+    "underscore": "^1.9.2"
   },
   "keywords": [
     "browsers",
