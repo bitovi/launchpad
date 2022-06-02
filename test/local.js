@@ -46,7 +46,7 @@ describe('Local browser launcher tests', function() {
             server.once('request', function (req) {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
-              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
+              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family ' + expected + '(was ' + req.headers['user-agent'] + ')');
               instance.stop(done);
             });
           });
