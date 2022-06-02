@@ -15,7 +15,5 @@ matrix:
     - os: windows
       install:
         - choco install googlechrome --acceptlicense --yes --no-progress --ignore-checksums
-        - choco install firefox
-
-
+        - choco install firefox --acceptlicense --yes --no-progress --ignore-checksums
   
