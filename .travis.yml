@@ -12,6 +12,10 @@ matrix:
         chrome: stable
     - os: osx
       osx_image: xcode10.1
+    - os: windows
+      install:
+        - choco install googlechrome --acceptlicense --yes --no-progress --ignore-checksums
+        - choco install firefox
 
 
   
