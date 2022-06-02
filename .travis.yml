@@ -13,7 +13,8 @@ matrix:
     - os: osx
       osx_image: xcode10.1
     - os: windows
+      addons:
+        firefox: latest
       install:
         - choco install googlechrome --acceptlicense --yes --no-progress --ignore-checksums
-        - choco install firefox --acceptlicense --yes --no-progress --ignore-checksums
   
