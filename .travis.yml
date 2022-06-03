@@ -2,7 +2,7 @@ sudo: true
 language: node_js
 
 node_js: 
-  - 8
+  - 10
 
 matrix:
   include:
@@ -17,4 +17,3 @@ matrix:
         firefox: latest
       install:
         - choco install googlechrome --acceptlicense --yes --no-progress --ignore-checksums
-  

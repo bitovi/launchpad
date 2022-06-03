@@ -25,9 +25,9 @@ describe('Local browser launcher tests', function() {
         launcher.browsers(function (error, browsers) {
           assert.ok(!error, 'No error discovering browsers');
           assert.ok(browsers.length, 'Found at least one browser');
-          assert.ok(browsers[0].version, 'First browser has a version');
-          assert.ok(browsers[0].path, 'First browser has a path');
-          assert.ok(browsers[0].binPath, 'First browser has a binPath');
+          assert.ok(browsers[0].version, 'First browser has a version' + JSON.stringify(browsers[0]));
+          assert.ok(browsers[0].path, 'First browser has a path:' + JSON.stringify(browsers[0]));
+            assert.ok(browsers[0].binPath, 'First browser has a binPath' + JSON.stringify(browsers[0]));
           done();
         });
       });
@@ -46,7 +46,7 @@ describe('Local browser launcher tests', function() {
             server.once('request', function (req) {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
-              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family');
+              assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family ' + expected + '(was ' + req.headers['user-agent'] + ')');
               instance.stop(done);
             });
           });
