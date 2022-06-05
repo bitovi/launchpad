@@ -21,4 +21,4 @@ matrix:
       env:
         - YARN_GPG=no
       after_success:
-        - ps -ef
+        - tasklist
