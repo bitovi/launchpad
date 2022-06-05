@@ -23,11 +23,11 @@ describe('Local browser launcher tests', function() {
     it('does local browser and version discovery', function (done) {
       local(function (error, launcher) {
         launcher.browsers(function (error, browsers) {
-          assert.ok(!error, 'No error discovering browsers');
+          assert.ok(!error, 'No error discovering browsers: ' + error);
           assert.ok(browsers.length, 'Found at least one browser');
-          assert.ok(browsers[0].version, 'First browser has a version' + JSON.stringify(browsers[0]));
-          assert.ok(browsers[0].path, 'First browser has a path:' + JSON.stringify(browsers[0]));
-            assert.ok(browsers[0].binPath, 'First browser has a binPath' + JSON.stringify(browsers[0]));
+          assert.ok(browsers[0].version, 'First browser has a version: ' + JSON.stringify(browsers[0]));
+          assert.ok(browsers[0].path, 'First browser has a path: ' + JSON.stringify(browsers[0]));
+            assert.ok(browsers[0].binPath, 'First browser has a binPath: ' + JSON.stringify(browsers[0]));
           done();
         });
       });
@@ -101,7 +101,7 @@ describe('Local browser launcher tests', function() {
       beforeEach(function () {
         process.env.LAUNCHPAD_BROWSERS = 'phantom';
         process.env.LAUNCHPAD_PHANTOM = /^win/.test(process.platform) ?
-            path.join(node_modules, 'phantomjs-prebuilt', 'lib', 'phantom', 'phantomjs.exe') :
+            path.join(node_modules, 'phantomjs-prebuilt', 'lib', 'phantom', 'bin', 'phantomjs.exe') :
             path.join(node_modules, 'phantomjs-prebuilt', 'bin', 'phantomjs');
 
         local = require('../lib/local');
@@ -116,7 +116,7 @@ describe('Local browser launcher tests', function() {
           launcher.browsers(function (error, browsers) {
             assert.ok(!error, 'No error discovering browsers');
             assert.equal(browsers.length, 1, 'Found PhantomJS browser');
-            assert.equal(browsers[0].path, process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location');
+            assert.equal(browsers[0].path, process.env.LAUNCHPAD_PHANTOM, 'Found PhantomJS at selected location: ' + process.env.LAUNCHPAD_PHANTOM + ' vs ' + browsers[0].path);
             done();
           });
         });
