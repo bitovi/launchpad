@@ -55,6 +55,36 @@ describe('Local browser launcher tests', function() {
     });
   });
 
+  if(process.platform === 'win32') {
+    describe('Headless browsers on Windows', function () {
+      var local;
+      beforeEach(function () {
+        local = require('../lib/local');
+      });
+
+      ['chrome', 'chromium', 'canary', 'firefox'].forEach(function (name) {
+        it('handles ' + name, function (done) {
+          local(function (error, launcher) {
+            launcher[name]('http://localhost:6785', { args: '--headless' }, function (error, instance) {
+              if (error) {
+                // That's the only error we should get
+                assert.equal(error.message, 'Browser ' + name + ' not available.');
+                return done();
+              }
+
+              server.once('request', function (/*req*/) {
+                instance.stop(function(err, status) {
+                  assert.equal(status, 0, 'stop command returned non-zero status');
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  }
+
   describe('Custom env settings', function () {
 
     var node_modules = path.join(__dirname, '..', 'node_modules');
@@ -123,6 +153,7 @@ describe('Local browser launcher tests', function() {
       });
     });
   });
+
   if (process.platform === 'linux') {
     describe('Clean option', function() {
       var local = require('../lib/local');
