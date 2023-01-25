@@ -47,13 +47,51 @@ describe('Local browser launcher tests', function() {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
               assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family ' + expected + '(was ' + req.headers['user-agent'] + ')');
-              instance.stop(done);
+              instance.stop(function() {
+                // browsers aren't always "done" closing when the kill process returns
+                setTimeout(done, 1000);
+              });
             });
           });
         });
       });
     });
   });
+
+  if(process.platform === 'win32') {
+    describe('Headless browsers on Windows', function () {
+      var local;
+      beforeEach(function () {
+        local = require('../lib/local');
+      });
+
+      ['chrome', 'chromium', 'canary', 'firefox'].forEach(function (name) {
+        it('handles ' + name, function (done) {
+          local(function (error, launcher) {
+            var headless = name === 'firefox' ? '-headless' : '--headless';
+            launcher[name]('http://localhost:6785', { args: headless }, function (error, instance) {
+              if (error) {
+                // That's the only error we should get
+                assert.equal(error.message, 'Browser ' + name + ' not available.');
+                return done();
+              }
+
+              server.once('request', function (/*req*/) {
+                instance.stop(function(err, status) {
+                  var statusCode = typeof status === "number" ? status : status.code;
+                  // 127 or 4294967295 may be returned depending on platform, mapping to a 
+                  //   -1 in 7 or 32 bits.  check whether the code is zero or the last seven
+                  //   bits are all -1
+                  assert.ok(statusCode === 0 || statusCode <<25 >>25 === -1, 'stop command returned non-zero status ' + JSON.stringify(status));
+                  done();
+                });
+              });
+            });
+          });
+        });
+      });
+    });
+  }
 
   describe('Custom env settings', function () {
 
@@ -123,6 +161,7 @@ describe('Local browser launcher tests', function() {
       });
     });
   });
+
   if (process.platform === 'linux') {
     describe('Clean option', function() {
       var local = require('../lib/local');
