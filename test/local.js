@@ -12,7 +12,6 @@ var familyMapping = {
 var server = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
-  console.log(req.headers['user-agent']);
 }).listen(6785);
 
 describe('Local browser launcher tests', function() {
@@ -69,7 +68,8 @@ describe('Local browser launcher tests', function() {
       ['chrome', 'chromium', 'canary', 'firefox'].forEach(function (name) {
         it('handles ' + name, function (done) {
           local(function (error, launcher) {
-            launcher[name]('http://localhost:6785', { args: '--headless' }, function (error, instance) {
+            var headless = name === 'firefox' ? '-headless' : '--headless';
+            launcher[name]('http://localhost:6785', { args: headless }, function (error, instance) {
               if (error) {
                 // That's the only error we should get
                 assert.equal(error.message, 'Browser ' + name + ' not available.');
