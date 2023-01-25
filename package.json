@@ -1,7 +1,7 @@
 {
   "name": "launchpad",
   "description": "You can launch browsers! From NodeJS! Local ones! Remote ones! Browserstack ones!",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "homepage": "https://github.com/bitovi/launchpad",
   "author": [
     {
