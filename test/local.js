@@ -12,6 +12,7 @@ var familyMapping = {
 var server = http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
   res.end('Hello World\n');
+  console.log(req.headers['user-agent']);
 }).listen(6785);
 
 describe('Local browser launcher tests', function() {
@@ -47,7 +48,10 @@ describe('Local browser launcher tests', function() {
               var userAgent = useragent.parse(req.headers['user-agent']);
               var expected = familyMapping[name] || name;
               assert.equal(userAgent.family.toLowerCase(), expected, 'Got expected browser family ' + expected + '(was ' + req.headers['user-agent'] + ')');
-              instance.stop(done);
+              instance.stop(function() {
+                // browsers aren't always "done" closing when the kill process returns
+                setTimeout(done, 1000);
+              });
             });
           });
         });
@@ -74,7 +78,11 @@ describe('Local browser launcher tests', function() {
 
               server.once('request', function (/*req*/) {
                 instance.stop(function(err, status) {
-                  assert.equal(status, 0, 'stop command returned non-zero status');
+                  var statusCode = typeof status === "number" ? status : status.code;
+                  // 127 or 4294967295 may be returned depending on platform, mapping to a 
+                  //   -1 in 7 or 32 bits.  check whether the code is zero or the last seven
+                  //   bits are all -1
+                  assert.ok(statusCode === 0 || statusCode <<25 >>25 === -1, 'stop command returned non-zero status ' + JSON.stringify(status));
                   done();
                 });
               });
